@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.apk_installer.MainActivity" >
+    <item android:id="@+id/item1" android:orderInCategory="100" android:title="exit"></item>
+    <item android:id="@+id/item2" android:title="refresh" android:orderInCategory="101"></item>
+
+</menu>
