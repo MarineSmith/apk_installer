@@ -12,8 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends ActionBarActivity {
 	
@@ -44,6 +46,8 @@ public class MainActivity extends ActionBarActivity {
 		bt2 = (Button)this.findViewById(R.id.bt2);
 		lv1 = (ListView)this.findViewById(R.id.lv1);
 		bt1.setOnClickListener(mOnClickListener);
+		lv1.setOnItemClickListener(mOnItemClickListener);
+		lv1.setClickable(true);
 		mApk = new ArrayList<Apk>();
 		mApk_adapter = new Apk_adapter(mApk,MainActivity.this,lv1);
 	}
@@ -62,6 +66,18 @@ public class MainActivity extends ActionBarActivity {
 				search_file();
 				break;
 			}
+		}
+		
+	};
+	
+	private OnItemClickListener mOnItemClickListener = new OnItemClickListener(){
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			// TODO Auto-generated method stub
+			Log.e(TAG,"click");
+			mApk_adapter.ask4require(position);
 		}
 		
 	};

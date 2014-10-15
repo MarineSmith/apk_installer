@@ -8,10 +8,11 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -66,12 +67,13 @@ public class Apk_adapter extends BaseAdapter {
 			holder = new Holder();
 			holder.lv_tv1 = (TextView)convertView.findViewById(R.id.lv_tv1);
 			holder.lv_tv2 = (TextView)convertView.findViewById(R.id.lv_tv2);
-			holder.lv1_bt1 = (Button)convertView.findViewById(R.id.lv1_bt1);
-			holder.lv1_bt1.setOnClickListener(mOnClickListener);
+			
+			//holder.lv1_bt1.setOnClickListener(mOnClickListener);
 			convertView.setTag(holder);
 		}else{
 			holder = (Holder)convertView.getTag();
 		}
+		
 		apk = mApk.get(position);
 		holder.lv_tv1.setText(apk.getName());
 		holder.lv_tv2.setText(apk.getPath());
@@ -79,7 +81,7 @@ public class Apk_adapter extends BaseAdapter {
 		return convertView;
 	}
 	
-	private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+	/*private View.OnClickListener mOnClickListener = new View.OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
@@ -87,9 +89,8 @@ public class Apk_adapter extends BaseAdapter {
 			final int position  = lv1.getPositionForView((View) v.getParent());
 			ask4require(position);
 		}
-	};
-	
-	private void ask4require(final int position){
+	};*/
+	public void ask4require(final int position){
 		Builder mBuilder = new AlertDialog.Builder(mContext);
 		mBuilder.setTitle("Warning");
 		mBuilder.setMessage("This program may destroy your Android device.Are you sure??");
